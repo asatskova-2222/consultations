@@ -2,7 +2,8 @@
 
 
 class Storage:
-    # Простое in-memory хранилище.
+    # Простое in-memory хранилище
+    # тестовый
 
     def __init__(self):
         self.intervals = {}
