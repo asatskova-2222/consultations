@@ -25,6 +25,7 @@ def main():
         print('1. Свободные интервалы')
         print('2. Все интервалы')
         print('3. Записаться')
+        print('4. Показать все записи')
         print('0. Выход')
         choice = input('> ').strip()
 
@@ -48,6 +49,19 @@ def main():
                 print(f'Запись #{b.id} создана')
             except ValueError as e:
                 print(f'Ошибка: {e}')
+        elif choice == '4':
+            bookings = list(storage.bookings.values())
+            if not bookings:
+                print('Записей нет.')
+            else:
+                print('Записи:')
+                for b in bookings:
+                    interval = storage.intervals.get(b.interval_id)
+                    participant = storage.participants.get(b.participant_id)
+                    print(f'  Запись #{b.id}')
+                    print(f'    Интервал: {interval}')
+                    if participant:
+                        print(f'    Участник: {participant.name} ({participant.contact})')
         else:
             print('Нет такой команды.')
 
